@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import fs from "fs";
 
 import { fullPath, thumpPath } from "../paths";
+import { isInt } from "../utiles/utiles";
 
 export const validateQuery = (
   request: Request,
@@ -14,6 +15,18 @@ export const validateQuery = (
     if (!request.query[item]) {
       throw {
         message: ` ${item} is required `,
+        status: 400,
+        error: new Error(),
+      };
+    }
+    console.log(item, /^\d+$/.test(request.query[item] as string));
+
+    if (
+      (item === "width" || item === "height") &&
+      !isInt(request.query[item] as string)
+    ) {
+      throw {
+        message: ` ${item} must be integer `,
         status: 400,
         error: new Error(),
       };

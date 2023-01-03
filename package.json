@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "jasmine": "jasmine",
-    "build": "npx tsc",
+    "build": "npx tsc ",
     "lint": "eslint src/*.ts src/**/*.ts",
     "format": "prettier --config .prettierrc src/*.ts src/**/*.ts --write",
     "start": "node dist/index.js",
@@ -27,6 +27,7 @@
     "@types/validatorjs": "^3.15.0",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
+    "cpx": "^1.5.0",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
