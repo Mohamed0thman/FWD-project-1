@@ -13,6 +13,9 @@ app.use(express.json());
 
 app.use("/api", routes);
 
+app.get("/", (_request: Request, response: Response): void => {
+  response.send("welcome ");
+});
 app.use((_req: Request, res: Response) => {
   res.status(404).json({
     message: "ohh you are lost",
@@ -20,9 +23,5 @@ app.use((_req: Request, res: Response) => {
 });
 
 app.use(errorMiddleware);
-
-app.get("/", (request: Request, response: Response): void => {
-  response.send("welcome ");
-});
 
 export default app;

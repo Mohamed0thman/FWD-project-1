@@ -7,70 +7,72 @@ describe("image end point", (): void => {
   beforeAll(removeAllThumbImage);
 
   it("should fail prams is not provided", async (): Promise<void> => {
-    const response = await HttpReqest.get("/images");
+    const response = await HttpReqest.get("/api/images");
     expect(response.status).toBe(422);
   });
-  it("should fail name is not provided", async (): Promise<void> => {
-    const response = await HttpReqest.get("/images?width=100&height=100");
+  it("should fail filename is not provided", async (): Promise<void> => {
+    const response = await HttpReqest.get("/api/images?width=100&height=100");
     expect(response.status).toBe(422);
   });
 
   it("should fail width is not provided", async (): Promise<void> => {
-    const response = await HttpReqest.get("/images?name=image&height=100");
+    const response = await HttpReqest.get("/api/images?filename=image&height=100");
     expect(response.status).toBe(422);
   });
 
   it("should fail height is not provided", async (): Promise<void> => {
-    const response = await HttpReqest.get("/images?name=sunflower&width=100");
+    const response = await HttpReqest.get(
+      "/api/images?filename=sunflower&width=100"
+    );
     expect(response.status).toBe(422);
   });
 
   it("should fail height is string", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/images?name=sunflower&width=100&height=abc"
+      "/api/images?filename=sunflower&width=100&height=abc"
     );
     expect(response.status).toBe(422);
   });
 
   it("should fail height is not vaild integer", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/images?name=sunflower&width=100&height=x100"
+      "/api/images?filename=sunflower&width=100&height=x100"
     );
     expect(response.status).toBe(422);
   });
 
-  it("should fail when width is string", async (): Promise<void> => {
+  it("should fail  width is string", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/images?name=sunflower&width=abc&height=100"
+      "/api/images?filename=sunflower&width=abc&height=100"
     );
     expect(response.status).toBe(422);
   });
 
-  it("should fail when height is not vaild integer", async (): Promise<void> => {
+  it("should fail  height is not vaild integer", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/images?name=sunflower&width=x100&height=100"
+      "/api/images?filename=sunflower&width=x100&height=100"
     );
     expect(response.status).toBe(422);
   });
 
   it("should fail image is not found", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/images?name=notFound&width=100&height=100"
+      "/api/images?filename=notFound&width=100&height=100"
     );
     expect(response.status).toBe(404);
   });
 
   it("create new image", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/images?name=image&width=100&height=100"
+      "/api/images?filename=sunflower&width=100&height=100"
     );
 
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(200);
   });
 
   it("exist image", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/images?name=image&width=100&height=100"
+      "/api/images?filename=sunflower&width=100&height=100"
     );
     expect(response.status).toBe(200);
   });

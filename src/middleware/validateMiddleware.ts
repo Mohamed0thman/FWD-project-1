@@ -13,7 +13,7 @@ export const validateQuery = (
 
   if (Object.keys(request.query).length < 3) {
     throw {
-      message: ` pleaase enter image name, width and height `,
+      message: ` please enter image name, width and height `,
       status: 422,
       error: new Error(),
     };
