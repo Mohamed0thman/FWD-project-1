@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import resizeImage from "../utiles/sharp.utiles";
 
-export const create = async (
+export const getImage = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -11,7 +11,6 @@ export const create = async (
       width: number = parseInt(req.query.width as string),
       height: number = parseInt(req.query.height as string);
     const image = await resizeImage(filename, width, height);
-console.log("done");
 
     return res.status(200).sendFile(image);
   } catch (err) {

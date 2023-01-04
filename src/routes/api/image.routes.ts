@@ -10,5 +10,5 @@ const routes = Router();
 // // api
 routes
   .route("/")
-  .get([validateQuery, existThumpImage, existFullImage], controllers.create);
+  .get([validateQuery, existThumpImage, existFullImage], controllers.getImage);
 export default routes;

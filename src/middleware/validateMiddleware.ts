@@ -11,23 +11,29 @@ export const validateQuery = (
 ): void => {
   console.log("request.query", request.query);
 
+  if (Object.keys(request.query).length < 3) {
+    throw {
+      message: ` pleaase enter image name, width and height `,
+      status: 422,
+      error: new Error(),
+    };
+  }
+
   for (const item in request.query) {
     if (!request.query[item]) {
       throw {
         message: ` ${item} is required `,
-        status: 400,
+        status: 422,
         error: new Error(),
       };
     }
-    console.log(item, /^\d+$/.test(request.query[item] as string));
-
     if (
       (item === "width" || item === "height") &&
       !isInt(request.query[item] as string)
     ) {
       throw {
         message: ` ${item} must be integer `,
-        status: 400,
+        status: 422,
         error: new Error(),
       };
     }
@@ -43,7 +49,11 @@ export const existFullImage = (
   console.log("request.query", request.query);
   const file = `${fullPath}/${request.query.filename}.jpg`;
   if (!fs.existsSync(file)) {
-    throw new Error("image not found");
+    throw {
+      message: ` image not found `,
+      status: 404,
+      error: new Error(),
+    };
   }
   next();
 };

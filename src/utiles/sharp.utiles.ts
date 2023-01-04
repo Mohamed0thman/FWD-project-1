@@ -1,5 +1,7 @@
+import path from "path";
 import sharp from "sharp";
 import { fullPath, thumpPath } from "../paths";
+import fs from "fs";
 
 async function resizeImage(
   filename: string,
@@ -25,4 +27,10 @@ async function resizeImage(
     throw error;
   }
 }
+
+export const removeAllThumbImage = (): void => {
+  fs.readdirSync(thumpPath).forEach((item) => {
+    fs.unlinkSync(path.join(thumpPath, `/${item}`));
+  });
+};
 export default resizeImage;
