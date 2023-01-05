@@ -23,3 +23,24 @@ by
  
   ![example](./docs/image/exmple.PNG)
   ---
+
+## Scripts
+1- to build the app
+```shell
+    npm run build
+```
+2- to start development server
+
+```shell
+    npm run dev
+```
+
+3- to test the app
+```shell
+    npm run test
+```
+## Endpoints
+* "/" => home page with welcome message
+* "/images?filename={image-name}&width={image-width}&height={image-height}" =>  create thumbs from images 
+    by providing name , width and height of the image.
+---
