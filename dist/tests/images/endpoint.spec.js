@@ -39,14 +39,14 @@ describe("image end point", () => {
         expect(response.status).toBe(422);
     }));
     it("should fail height is not vaild integer", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield HttpReqest.get("/api/images?filename=sunflower&width=100&height=x100");
+        const response = yield HttpReqest.get("/api/images?filename=sunflower&width=100&height=-22");
         expect(response.status).toBe(422);
     }));
     it("should fail  width is string", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield HttpReqest.get("/api/images?filename=sunflower&width=abc&height=100");
         expect(response.status).toBe(422);
     }));
-    it("should fail  height is not vaild integer", () => __awaiter(void 0, void 0, void 0, function* () {
+    it("should fail  width is not vaild integer", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield HttpReqest.get("/api/images?filename=sunflower&width=x100&height=100");
         expect(response.status).toBe(422);
     }));

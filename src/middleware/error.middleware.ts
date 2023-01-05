@@ -17,7 +17,6 @@ const errorMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(error.status );
   
   const status = error.status || 500;
   const message = error.message || "opps";

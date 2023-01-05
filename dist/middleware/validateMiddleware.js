@@ -8,7 +8,6 @@ const fs_1 = __importDefault(require("fs"));
 const paths_1 = require("../paths");
 const utiles_1 = require("../utiles/utiles");
 const validateQuery = (request, _response, next) => {
-    console.log("request.query", request.query);
     if (Object.keys(request.query).length < 3) {
         throw {
             message: ` please enter image name, width and height `,
@@ -37,7 +36,6 @@ const validateQuery = (request, _response, next) => {
 };
 exports.validateQuery = validateQuery;
 const existFullImage = (request, _response, next) => {
-    console.log("request.query", request.query);
     const file = `${paths_1.fullPath}/${request.query.filename}.jpg`;
     if (!fs_1.default.existsSync(file)) {
         throw {

@@ -20,7 +20,6 @@ async function resizeImage(
       .catch((error) => {
         throw error;
       });
-    console.log("res", result);
 
     return output;
   } catch (error) {

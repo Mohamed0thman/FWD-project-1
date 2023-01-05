@@ -21,3 +21,9 @@ describe("App", () => {
         expect(response.status).toBe(200);
     }));
 });
+describe("user lost", () => {
+    it("enter api not exist", () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield HttpReqest.get("/api");
+        expect(response.status).toBe(404);
+    }));
+});

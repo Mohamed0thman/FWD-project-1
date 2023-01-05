@@ -9,7 +9,6 @@ export const validateQuery = (
   _response: Response,
   next: NextFunction
 ): void => {
-  console.log("request.query", request.query);
 
   if (Object.keys(request.query).length < 3) {
     throw {
@@ -46,7 +45,6 @@ export const existFullImage = (
   _response: Response,
   next: NextFunction
 ): void => {
-  console.log("request.query", request.query);
   const file = `${fullPath}/${request.query.filename}.jpg`;
   if (!fs.existsSync(file)) {
     throw {

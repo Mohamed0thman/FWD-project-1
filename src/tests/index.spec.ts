@@ -9,3 +9,10 @@ describe("App", (): void => {
     expect(response.status).toBe(200);
   });
 });
+
+describe("user lost", (): void => {
+  it("enter api not exist", async () => {
+    const response = await HttpReqest.get("/api");
+    expect(response.status).toBe(404);
+  });
+});

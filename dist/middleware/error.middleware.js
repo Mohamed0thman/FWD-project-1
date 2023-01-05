@@ -10,7 +10,6 @@ const htmlTemplate = (message) => {
   `;
 };
 const errorMiddleware = (error, req, res, next) => {
-    console.log(error.status);
     const status = error.status || 500;
     const message = error.message || "opps";
     res.status(status).send(htmlTemplate(message));
