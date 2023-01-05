@@ -16,7 +16,9 @@ describe("image end point", (): void => {
   });
 
   it("should fail width is not provided", async (): Promise<void> => {
-    const response = await HttpReqest.get("/api/images?filename=image&height=100");
+    const response = await HttpReqest.get(
+      "/api/images?filename=image&height=100"
+    );
     expect(response.status).toBe(422);
   });
 

@@ -9,7 +9,7 @@ const htmlTemplate = (message) => {
   </div>
   `;
 };
-const errorMiddleware = (error, req, res, next) => {
+const errorMiddleware = (error, _req, res) => {
     const status = error.status || 500;
     const message = error.message || "opps";
     res.status(status).send(htmlTemplate(message));

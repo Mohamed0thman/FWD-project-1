@@ -22,7 +22,7 @@ function resizeImage(filename, width, height) {
         try {
             const imagePath = `${paths_1.fullPath}/${filename}.jpg`;
             const output = `${paths_1.thumpPath}/${filename}-${width}x${height}.jpg`;
-            const result = yield (0, sharp_1.default)(imagePath)
+            yield (0, sharp_1.default)(imagePath)
                 .resize({
                 width,
                 height,

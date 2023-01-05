@@ -11,7 +11,7 @@ async function resizeImage(
   try {
     const imagePath = `${fullPath}/${filename}.jpg`;
     const output = `${thumpPath}/${filename}-${width}x${height}.jpg`;
-    const result = await sharp(imagePath)
+    await sharp(imagePath)
       .resize({
         width,
         height,

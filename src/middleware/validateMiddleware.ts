@@ -9,7 +9,6 @@ export const validateQuery = (
   _response: Response,
   next: NextFunction
 ): void => {
-
   if (Object.keys(request.query).length < 3) {
     throw {
       message: ` please enter image name, width and height `,

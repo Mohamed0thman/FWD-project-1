@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import Error from "../interfaces/error.interface";
 
 const htmlTemplate = (message: string): string => {
@@ -11,13 +11,7 @@ const htmlTemplate = (message: string): string => {
   `;
 };
 
-const errorMiddleware = (
-  error: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  
+const errorMiddleware = (error: Error, _req: Request, res: Response): void => {
   const status = error.status || 500;
   const message = error.message || "opps";
   res.status(status).send(htmlTemplate(message));

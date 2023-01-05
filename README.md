@@ -45,6 +45,18 @@ by
     npm run test
 ```
 
+4- to check code (typescript) errors
+
+```shell
+    npm run lint
+```
+
+5- to format code (typescript)
+
+```shell
+    npm run format
+```
+
 ## Endpoints
 
 - `http://localhost:3000/` => home page with welcome message
