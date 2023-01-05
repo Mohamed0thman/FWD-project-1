@@ -6,7 +6,7 @@ const app: Application = express();
 const port = process.env.PORT || 3000;
 
 app.listen(port, (): void => {
-  console.log(`\nApplication started in http://localhost:${port}`);
+  console.log(`Application started in http://localhost:${port}`);
 });
 
 app.use(express.json());
@@ -17,9 +17,12 @@ app.get("/", (_request: Request, response: Response): void => {
   response.send("welcome ");
 });
 app.use((_req: Request, res: Response) => {
-  res.status(404).json({
-    message: "ohh you are lost",
-  });
+  res.status(404).send(
+    `<div style="height:100vh;display:flex;align-items: center;justify-content: center;flex-direction: column;">
+        <h3 style="color:#655DAF; font-size:80px;margin:0px">Oops!</h3>
+        <h5 style="font-size:20px;text-align:center">your page you are looking for </br> can't found</h5>
+      </div>`
+  );
 });
 
 app.use(errorMiddleware);

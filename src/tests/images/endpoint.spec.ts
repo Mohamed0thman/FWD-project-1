@@ -36,7 +36,7 @@ describe("image end point", (): void => {
 
   it("should fail height is not vaild integer", async (): Promise<void> => {
     const response = await HttpReqest.get(
-      "/api/images?filename=sunflower&width=100&height=x100"
+      "/api/images?filename=sunflower&width=100&height=-22"
     );
     expect(response.status).toBe(422);
   });
@@ -48,7 +48,7 @@ describe("image end point", (): void => {
     expect(response.status).toBe(422);
   });
 
-  it("should fail  height is not vaild integer", async (): Promise<void> => {
+  it("should fail  width is not vaild integer", async (): Promise<void> => {
     const response = await HttpReqest.get(
       "/api/images?filename=sunflower&width=x100&height=100"
     );
